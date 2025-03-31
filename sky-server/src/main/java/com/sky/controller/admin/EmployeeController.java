@@ -80,6 +80,8 @@ public class EmployeeController {
     @ApiOperation("add new employee")
     public Result saveEmployee(@RequestBody EmployeeDTO employeeDTO){
         log.info("Adding new employee", employeeDTO);
+        System.out.println("Current thread id: " + Thread.currentThread().getId());
+
         employeeService.save(employeeDTO);
         return Result.success();
     }
@@ -91,4 +93,7 @@ public class EmployeeController {
         PageResult pageQuery=employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageQuery);
     }
+
+
+
 }

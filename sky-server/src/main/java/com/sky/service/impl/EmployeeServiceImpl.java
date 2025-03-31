@@ -27,6 +27,7 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+
     @Autowired
     private EmployeeMapper employeeMapper;
 
@@ -68,6 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void save(EmployeeDTO employeeDTO) {
+        System.out.println("Current thread id: " + Thread.currentThread().getId());
         Employee employee = new Employee();
 
         BeanUtils.copyProperties(employeeDTO, employee);
