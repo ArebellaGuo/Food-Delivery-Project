@@ -70,7 +70,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-
+    //spring mvc message converter
     @Override
     protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         //create a message converter

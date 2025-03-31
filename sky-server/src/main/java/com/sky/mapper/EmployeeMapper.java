@@ -24,6 +24,9 @@ public interface EmployeeMapper {
 //    @AutoFill(value = OperationType.INSERT)
     void insert(Employee employee);
 
-
+    //dynamic sql statement in EmployeeMapper.xml
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+
+    void update(Employee employee);
 }

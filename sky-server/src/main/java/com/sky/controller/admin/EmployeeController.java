@@ -79,7 +79,7 @@ public class EmployeeController {
     @PostMapping
     @ApiOperation("add new employee")
     public Result saveEmployee(@RequestBody EmployeeDTO employeeDTO){
-        log.info("Adding new employee", employeeDTO);
+        log.info("Adding new employee {}", employeeDTO);
         System.out.println("Current thread id: " + Thread.currentThread().getId());
 
         employeeService.save(employeeDTO);
@@ -89,11 +89,18 @@ public class EmployeeController {
     @GetMapping("/page")
     @ApiOperation("Get all employees")
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
-        log.info("Find all employees", employeePageQueryDTO);
+        log.info("Find all employees:{}", employeePageQueryDTO);
         PageResult pageQuery=employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageQuery);
     }
 
+    @PostMapping("/status/{status}")
+    @ApiOperation("Start or ban employee account")
+    public Result startOrStop(@PathVariable Integer status, Long id){
+        log.info("Freeze or unfreeze employee account: {}, {}",status,id);
+        employeeService.startOrStop(status,id);
+        return Result.success();
+    }
 
 
 }
